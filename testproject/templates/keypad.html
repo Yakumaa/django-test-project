@@ -1,0 +1,186 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Keypad</title>
+    </head>
+    <body bgcolor="lightgrey">
+        <table border="2" style="border-collapse: collapse; table-layout:fixed; position:fixed; top: 50%; left: 50%; margin-top:-100px; margin-left:-300px; " width="50%">
+            <tr>
+                <div>
+                    <input type="button" class="button number" name="one" value="1" onclick="enterValue('1')">
+                    <input type="button" class="button number" name="two" value="2" onclick="enterValue('2')">
+                    <input type="button" class="button number" name="three" value="3" onclick="enterValue('3')">
+                    
+                </div>
+                <div>
+                    <input type="button" class="button number" name="four" value="4" onclick="enterValue('4')">
+                    <input type="button" class="button number" name="five" value="5" onclick="enterValue('5')">
+                    <input type="button" class="button number" name="six" value="6" onclick="enterValue('6')">
+                    
+                </div>
+                <div>
+                    <input type="button" class="button number" name="seven" value="7" onclick="enterValue('7')">
+                    <input type="button" class="button number" name="eight" value="8" onclick="enterValue('8')">
+                    <input type="button" class="button number" name="nine" value="9" onclick="enterValue('9')">
+                    
+                </div>
+                
+                
+                <th><h1 style="display: inline-block;">1</h1> <h4 style="display: inline-block;"></h4></th>
+                <th><h1 style="display: inline-block;">2</h1> <h4 style="display: inline-block;">abc</h4></th>
+                <th><h1 style="display: inline-block;">3</h1> <h4 style="display: inline-block;">def</h4></th>
+            </tr>
+            <tr>
+                <th><h1 style="display: inline-block;">4</h1> <h4 style="display: inline-block;">ghi</h4></th>
+                <th><h1 style="display: inline-block;">5</h1> <h4 style="display: inline-block;">jkl</h4></th>
+                <th><h1 style="display: inline-block;">6</h1> <h4 style="display: inline-block;">mno</h4></th>
+            </tr>
+            <tr>
+                <th><h1 style="display: inline-block;">7</h1> <h4 style="display: inline-block;">pqrs</h4></th>
+                <th><h1 style="display: inline-block;">8</h1> <h4 style="display: inline-block;">tuv</h4></th>
+                <th><h1 style="display: inline-block;">9</h1> <h4 style="display: inline-block;">wxyz</h4></th>
+            </tr>
+
+        </table>
+    </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+        integrity=
+"sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+        integrity=
+"sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <!-- for styling -->
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: grey;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+  
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+    <title>Keypad</title>
+</head>
+<!-- create table -->
+  
+<body>
+    <table id="calcu">
+        <tr>
+            <td colspan="10"><input type="text" id="result"></td>
+            
+        </tr>
+        <tr>
+            <!-- create button and assign value to each button -->
+            <!-- dis("1") will call function dis to display value -->
+            <td><input type="button" value="1" onclick="dis('1')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="2abc" onclick="dis('2')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="3def" onclick="dis('3')" 
+                        onkeydown="myFunction(event)"> </td>
+            
+        </tr>
+        <tr>
+            <td><input type="button" value="4ghi" onclick="dis('4')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="5jkl" onclick="dis('5')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="6mno" onclick="dis('6')" 
+                        onkeydown="myFunction(event)"> </td>
+            
+        </tr>
+        <tr>
+            <td><input type="button" value="7pqrs" onclick="dis('7')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="8tuv" onclick="dis('8')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="9wxyz" onclick="dis('9')" 
+                        onkeydown="myFunction(event)"> </td>
+            
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="dis('0')" 
+                        onkeydown="myFunction(event)"> </td>
+            
+            <!-- solve function call function solve to evaluate value -->
+            <td><input type="button" value="=" onclick="solve()"> </td>
+            <!-- clr() function will call clr to clear all value -->
+            <td><input type="button" value="c" onclick="clr()" /> </td>
+  
+            
+        </tr>
+    </table>
+  
+    <script>
+        // Function that display value
+        function dis(val) {
+            document.getElementById("result").value += val
+        }
+  
+        function myFunction(event) {
+            if (event.key == '0' || event.key == '1' 
+                || event.key == '2' || event.key == '3'
+                || event.key == '4' || event.key == '5' 
+                || event.key == '6' || event.key == '7'
+                || event.key == '8' || event.key == '9' 
+                )
+                document.getElementById("result").value += event.key;
+        }
+  
+        var cal = document.getElementById("calcu");
+        cal.onkeyup = function (event) {
+            if (event.keyCode === 13) {
+                console.log("Enter");
+                let x = document.getElementById("result").value
+                console.log(x);
+                solve();
+            }
+        }
+  
+        // Function that evaluates the digit and return result
+        function solve() {
+            let x = document.getElementById("result").value
+            let y = math.evaluate(x)
+            document.getElementById("result").value = y
+        }
+  
+        // Function that clear the display
+        function clr() {
+            document.getElementById("result").value = ""
+        }
+    </script>
+</body>
+  
+</html> 
